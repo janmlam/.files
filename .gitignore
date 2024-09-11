@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Whitelist specific files and directories
+!.gitignore
+
+!/nvim/
+!/nvim/** 
+
+
