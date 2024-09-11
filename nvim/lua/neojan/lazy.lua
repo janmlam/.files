@@ -32,6 +32,11 @@ require("lazy").setup({
         {
             "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
         },
+        {
+            "ThePrimeagen/harpoon",
+            branch = "harpoon2",
+            dependencies = { "nvim-lua/plenary.nvim" }
+        },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
