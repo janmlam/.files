@@ -19,10 +19,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         {
-            "rebelot/kanagawa.nvim",
+            "navarasu/onedark.nvim",
             priority = 1000,
             config = function()
-                vim.cmd([[colorscheme kanagawa]])
+                vim.cmd([[colorscheme onedark]])
             end,
         },
         {
@@ -30,17 +30,56 @@ require("lazy").setup({
             dependencies = { 'nvim-lua/plenary.nvim' }
         },
         {
-            "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
-        },
-        {
             "ThePrimeagen/harpoon",
             branch = "harpoon2",
-            dependencies = { "nvim-lua/plenary.nvim" }
+        },
+        {
+            "gbprod/yanky.nvim",
+        },
+        {
+            "oysandvik94/curl.nvim",
+            cmd = { "CurlOpen" },
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+            },
+            config = true,
+        },
+        {
+            "nvim-treesitter/nvim-treesitter",
+            build = ":TSUpdate",
+            config = function () 
+                local configs = require("nvim-treesitter.configs")
+
+                configs.setup({
+                    ensure_installed = { "c", "lua", "vim", "vimdoc", "javascript", "html", "markdown", "markdown_inline", "go", "python", "json", "yaml", "xml" },
+                    sync_install = false,
+                    highlight = { enable = true },
+                    indent = { enable = true },  
+                    incremental_selection = {
+                        enable = true,
+                        keymaps = {
+                            init_selection = "<C-space>",
+                            node_incremental = "<C-space>",
+                            scope_incremental = false,
+                            node_decremental = "<bs>",
+                        },
+                    },
+                    textobjects = {
+                        move = {
+                            enable = true,
+                            goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+                            goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+                            goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
+                            goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+                        },
+                    },
+                })
+            end,
         },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { "kanagawa" } },
+    install = { colorscheme = { "onedark" } },
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
