@@ -31,6 +31,14 @@ return {
   },
 
   {
+    "miversen33/sunglasses.nvim",
+    lazy = false,
+    filter_type = "NOSYNTAX",
+    filter_percent = 0.75,
+    config = true,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
