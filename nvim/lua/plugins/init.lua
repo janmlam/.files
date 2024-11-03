@@ -13,14 +13,6 @@ return {
   },
 
   {
-    "gbprod/yanky.nvim",
-    lazy = false,
-    opts = {
-      highlight = { timer = 150 },
-    },
-  },
-
-  {
     "folke/noice.nvim",
     opts = require "configs.noice",
     event = "VeryLazy",
@@ -28,14 +20,6 @@ return {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
-  },
-
-  {
-    "miversen33/sunglasses.nvim",
-    lazy = false,
-    filter_type = "NOSYNTAX",
-    filter_percent = 0.75,
-    config = true,
   },
 
   {
@@ -58,6 +42,22 @@ return {
         "bash",
         "java",
       },
+    },
+  },
+
+  {
+    "miversen33/sunglasses.nvim",
+    lazy = false,
+    config = function()
+      require "configs.sunglasses"
+    end,
+  },
+
+  {
+    "gbprod/yanky.nvim",
+    lazy = false,
+    opts = {
+      highlight = { timer = 150 },
     },
   },
 }
